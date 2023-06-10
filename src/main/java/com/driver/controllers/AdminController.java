@@ -18,7 +18,7 @@ public class AdminController {
 
 
 	@Autowired
-	private AdminService adminService;
+	AdminService adminService;
 
 	@PostMapping("/register")
 	public ResponseEntity<Void> registerAdmin(@RequestBody Admin admin){
