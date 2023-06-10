@@ -75,6 +75,21 @@ public class TripBooking{
     public void setStatus(TripStatus status) {
         this.status = status;
     }
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     @ManyToOne
     @JoinColumn
