@@ -34,6 +34,10 @@ public class Driver{
         this.tripBookingList = tripBookingList;
         this.cab = cab;
     }
+    public Driver(String mobile, String password) {
+        this.mobile = mobile;
+        this.password = password;
+    }
 
     public int getDriverId() {
         return driverId;
