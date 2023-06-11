@@ -19,25 +19,24 @@ public class Driver{
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
     List<TripBooking> tripBookingList = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn
+    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
     private Cab cab;
 
-    public Driver(){
+//    public Driver(){
+//
+//    }
 
-    }
-
-    public Driver(int driverId, String mobile, String password, List<TripBooking> tripBookingList, Cab cab) {
-        this.driverId = driverId;
-        this.mobile = mobile;
-        this.password = password;
-        this.tripBookingList = tripBookingList;
-        this.cab = cab;
-    }
-    public Driver(String mobile, String password) {
-        this.mobile = mobile;
-        this.password = password;
-    }
+//    public Driver(int driverId, String mobile, String password, List<TripBooking> tripBookingList, Cab cab) {
+//        this.driverId = driverId;
+//        this.mobile = mobile;
+//        this.password = password;
+//        this.tripBookingList = tripBookingList;
+//        this.cab = cab;
+//    }
+//    public Driver(String mobile, String password) {
+//        this.mobile = mobile;
+//        this.password = password;
+//    }
 
     public int getDriverId() {
         return driverId;

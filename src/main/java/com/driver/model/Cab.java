@@ -13,20 +13,21 @@ public class Cab{
 
     private boolean available;
 
-    @OneToOne(mappedBy = "cab", cascade = CascadeType.ALL)
+    @OneToOne
+    @JoinColumn
     private Driver driver;
 
-    public Cab(int id, int perKmRate, boolean available) {
-        this.id = id;
-        this.perKmRate = perKmRate;
-        this.available = available;
-    }
-    public Cab(){
-
-    }
-    public Cab(int perKmRate) {
-        this.perKmRate = perKmRate;
-    }
+//    public Cab(int id, int perKmRate, boolean available) {
+//        this.id = id;
+//        this.perKmRate = perKmRate;
+//        this.available = available;
+//    }
+//    public Cab(){
+//
+//    }
+//    public Cab(int perKmRate) {
+//        this.perKmRate = perKmRate;
+//    }
 
     public int getId() {
         return id;
