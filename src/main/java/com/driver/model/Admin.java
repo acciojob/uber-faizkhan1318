@@ -1,12 +1,16 @@
 package com.driver.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "admin")
-public class Admin {
+@Table(name="admin")
+public class Admin{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +20,6 @@ public class Admin {
 
     private String password;
 
-    public Admin() {
-
-    }
 
     public int getAdminId() {
         return adminId;

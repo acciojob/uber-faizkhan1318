@@ -1,12 +1,19 @@
 package com.driver.model;
 
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table(name = "driver")
+@Table
 public class Driver{
 
     @Id
@@ -16,27 +23,21 @@ public class Driver{
     private String mobile;
 
     private String password;
-    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
-    List<TripBooking> tripBookingList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "driver",cascade = CascadeType.ALL)
     private Cab cab;
 
-//    public Driver(){
-//
-//    }
 
-//    public Driver(int driverId, String mobile, String password, List<TripBooking> tripBookingList, Cab cab) {
-//        this.driverId = driverId;
-//        this.mobile = mobile;
-//        this.password = password;
-//        this.tripBookingList = tripBookingList;
-//        this.cab = cab;
-//    }
-//    public Driver(String mobile, String password) {
-//        this.mobile = mobile;
-//        this.password = password;
-//    }
+    @OneToMany(mappedBy = "driver",cascade = CascadeType.ALL)
+    private List<TripBooking> tripBookingList = new ArrayList<>();
+
+    public List<TripBooking> getTripBookingList() {
+        return tripBookingList;
+    }
+
+    public void setTripBookingList(List<TripBooking> tripBookingList) {
+        this.tripBookingList = tripBookingList;
+    }
 
     public int getDriverId() {
         return driverId;
@@ -61,18 +62,12 @@ public class Driver{
     public void setPassword(String password) {
         this.password = password;
     }
+
     public Cab getCab() {
         return cab;
     }
 
     public void setCab(Cab cab) {
         this.cab = cab;
-    }
-
-    public List<TripBooking> getTripBookingList() {
-        return tripBookingList;
-    }
-    public void setTripBookingList(List<TripBooking> tripBookingList){
-        this.tripBookingList=tripBookingList;
     }
 }

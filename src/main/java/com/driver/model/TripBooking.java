@@ -1,32 +1,60 @@
 package com.driver.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "TripBooking")
+@Table
 public class TripBooking{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tripBookingId;
+
     private String fromLocation;
+
     private String toLocation;
+
     private int distanceInKm;
-    private int bill;
 
     @Enumerated(EnumType.STRING)
     private TripStatus status;
 
-//    public TripBooking() {
-//    }
-//
-//    public TripBooking(String fromLocation, String toLocation, int distanceInKm, TripStatus status, int bill) {
-//        this.fromLocation = fromLocation;
-//        this.toLocation = toLocation;
-//        this.distanceInKm = distanceInKm;
-//        this.status = status;
-//        this.bill = bill;
-//    }
+    public TripStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TripStatus status) {
+        this.status = status;
+    }
+
+    private int bill;
+
+    public int getBill() {
+        return bill;
+    }
+
+    public void setBill(int bill) {
+        this.bill = bill;
+    }
+
+    @ManyToOne
+    @JoinColumn
+    private Customer customer;
+
+
+    @ManyToOne
+    @JoinColumn
+    private Driver driver;
+
 
     public int getTripBookingId() {
         return tripBookingId;
@@ -60,29 +88,6 @@ public class TripBooking{
         this.distanceInKm = distanceInKm;
     }
 
-    public int getBill() {
-        return bill;
-    }
-
-    public void setBill(int bill) {
-        this.bill = bill;
-    }
-
-    public TripStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TripStatus status) {
-        this.status = status;
-    }
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
@@ -91,11 +96,11 @@ public class TripBooking{
         this.customer = customer;
     }
 
-    @ManyToOne
-    @JoinColumn
-    private Driver driver;
+    public Driver getDriver() {
+        return driver;
+    }
 
-    @ManyToOne
-    @JoinColumn
-    private Customer customer;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 }
