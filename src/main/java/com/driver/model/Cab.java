@@ -12,16 +12,11 @@ import javax.persistence.Table;
 @Table
 @Entity
 public class Cab{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private int Id;
     private int perKmRate;
-
-    private boolean available;
-
-
+    private boolean Available;
     @OneToOne
     @JoinColumn
     private Driver driver;
@@ -34,12 +29,26 @@ public class Cab{
         this.driver = driver;
     }
 
+    public Cab() {
+    }
+
+    public Cab(int perKmRate, boolean available) {
+        this.perKmRate = perKmRate;
+        this.Available = available;
+    }
+
+    public Cab(int id, int perKmRate, boolean available, Driver driver) {
+        Id = id;
+        this.perKmRate = perKmRate;
+        Available = available;
+        this.driver = driver;
+    }
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public int getPerKmRate() {
@@ -51,10 +60,10 @@ public class Cab{
     }
 
     public boolean getAvailable() {
-        return available;
+        return Available;
     }
 
     public void setAvailable(boolean available) {
-        this.available = available;
+        this.Available = available;
     }
 }
